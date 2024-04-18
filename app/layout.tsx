@@ -5,7 +5,7 @@ import { supabaseServer } from "../lib/supabase/server";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import InitUser from "../lib/store/initUser";
-import InitProducts from "../lib/store/initProducts";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,15 +21,15 @@ export default async function RootLayout({
 }>) {
 
   const supabase = await supabaseServer();
-  const { data } = await supabase.auth.getUser();
-
+  const { data } = await supabase.auth.getSession();
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header user={data.user} />
+        <Header />
         {children}
+        <Toaster position="top-center" />
         <Footer />
-        <InitUser user={data.user} />
+        <InitUser user={data?.session?.user} />
       </body>
     </html>
   );

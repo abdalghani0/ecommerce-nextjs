@@ -4,15 +4,14 @@ import { supabaseBrowser } from "../../lib/supabase/browser"
 import { Button } from "./button"
 import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuContent, DropdownMenu } from "./dropdown-menu"
 import { ArchiveIcon, LogOutIcon, SettingsIcon, UserIcon } from "./icons"
-import { useUser } from "../../lib/store/user"
 import { User } from "@supabase/supabase-js"
+import Image from "next/image"
 
-export default async function UserDropDownMenu({user} : {user: User}) {
+export default function UserDropDownMenu({user} : {user: User}) {
   const router = useRouter();
-  const supabase = supabaseBrowser();
-  const { data } = await supabase.from("users").select("*").eq("id", user?.id!).single();
 
   const handleLogout = async () => {
+    const supabase = supabaseBrowser();
     await supabase.auth.signOut();
     router.refresh();
   };
@@ -20,12 +19,12 @@ export default async function UserDropDownMenu({user} : {user: User}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="rounded-full" size="icon" variant="ghost">
-          <img
+        <div className="hover:bg-accent hover:text-accent-foreground h-9 w-9 rounded-full transition-colors">
+          <Image
             alt="Avatar"
             className="rounded-full"
             height="32"
-            src={data?.avatar_url}
+            src={user?.user_metadata.avatar_url}
             style={{
               aspectRatio: "32/32",
               objectFit: "cover",
@@ -33,7 +32,7 @@ export default async function UserDropDownMenu({user} : {user: User}) {
             width="32"
           />
           <span className="sr-only">Toggle user menu</span>
-        </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>Hi, {user?.user_metadata.user_name}</DropdownMenuLabel>

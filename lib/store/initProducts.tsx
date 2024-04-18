@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { product, useProducts } from './products';
 
-function InitUser({products} : { products : product[] | undefined }) {
+function InitProducts({products} : { products : product[] | undefined }) {
     const initState = useRef(false);
 
     useEffect(() => {
@@ -16,4 +16,4 @@ function InitUser({products} : { products : product[] | undefined }) {
     return <></>
 }
 
-export default InitUser;
+export default InitProducts;

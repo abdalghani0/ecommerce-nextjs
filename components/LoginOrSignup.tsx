@@ -19,35 +19,35 @@ export function SingUpDialog() {
     const [password, setPassword] = useState("");
     const supabase = supabaseBrowser();
 
-    const signUpWithEmail = async() => {
-        if(email.trim() || password.trim()){
+    const signUpWithEmail = async () => {
+        if (email.trim() || password.trim()) {
 
         }
         else {
-            const {data, error} = await supabase.auth.signUp({
+            const { data, error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
                 options: {
                     emailRedirectTo: location.origin + "/api/auth/callback",
-                  },
+                },
             })
-            if(!error)
+            if (!error)
                 toast.message("user created");
-            else 
+            else
                 console.error(error.message)
             setEmail("");
             setPassword("");
         }
     };
 
-    const signUpWithGithub = async() => {
+    const signUpWithGithub = async () => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {
                 redirectTo: location.origin + "/api/auth/callback",
             }
         })
-        if(error)
+        if (error)
             console.error(error.message);
     }
 
@@ -55,12 +55,10 @@ export function SingUpDialog() {
     return (
         <Dialog>
             <DialogTrigger>
-                <div className="flex items-center gap-4">
-                    <Button className="bg-white text-gray-700 hover:text-white hover:bg-gray-700">
-                        <UserIcon className="w-4 h-4 mr-2" />
-                        Sign up
-                    </Button>
-                </div>
+                <Button className="bg-white text-gray-700 hover:text-white hover:bg-gray-700">
+                    <UserIcon className="w-4 h-4 mr-2" />
+                    Sign up
+                </Button>
             </DialogTrigger>
             <DialogContent>
                 <div className="flex items-center gap-4">
@@ -79,7 +77,7 @@ export function SingUpDialog() {
                                     <Label>Password</Label>
                                     <Input onChange={(e) => setPassword(e.currentTarget.value)} placeholder="Password" type="password" />
                                 </div>
-                                <Button onClick={() => signUpWithEmail()}  className="w-full">Sign up</Button>
+                                <Button onClick={() => signUpWithEmail()} className="w-full">Sign up</Button>
                             </form>
                             <Separator />
                             <Button className="w-full" variant="outline">
@@ -101,25 +99,23 @@ export function LoginDialog() {
     const [password, setPassword] = useState("");
     const supabase = supabaseBrowser();
 
-    const signinWithGithub = async() => {
+    const signinWithGithub = async () => {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {
                 redirectTo: location.origin + "/auth/callback",
             }
         })
-        if(error)
+        if (error)
             console.error(error.message);
     }
 
     return (
         <Dialog>
             <DialogTrigger>
-                <div className="flex items-center gap-4">
-                    <Button className="bg-transparent text-white hover:bg-transparent hover:text-gray-400">
-                        Login
-                    </Button>
-                </div>
+                <Button className="bg-transparent text-white hover:bg-transparent hover:text-gray-400">
+                    Login
+                </Button>
             </DialogTrigger>
             <DialogContent>
                 <div className="flex items-center gap-4">

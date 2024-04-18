@@ -12,7 +12,7 @@ export type product = {
 }
 
 interface ProductsState {
-    products: product[] | undefined
+    products: product[] | undefined 
 }
 
 export const useProducts = create<ProductsState>()((set) => ({

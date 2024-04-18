@@ -7,7 +7,7 @@ export default async function OtherProducts() {
     if(error)
         console.log(error.message)
     return(
-        <div className="grid py-4 px-12 w-full grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+        <div className="grid py-4 md:px-12 px-8 w-full grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
             {
                 data?.map((product) => {
                     return (

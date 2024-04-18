@@ -2,12 +2,13 @@
 import Link from "next/link";
 import { product } from "../lib/store/products";
 import { Button } from "./ui/button";
+import Image from "next/image";
 
 export default function Product({product} : {product: product}) {
     
     return (
         <div className="flex flex-col items-center gap-2 rounded-lg border hover:shadow-xl transition-all dark:hover:shadow-lg">
-            <img
+            <Image
                 alt="Product image"
                 className="aspect-[5/6] rounded-t-lg object-contain object-center"
                 height="250"
