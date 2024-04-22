@@ -62,19 +62,19 @@ export default function CartProduct({
 
   return (
     <tr className="pb-4">
-      <td className="w-60 md:w-96">
+      <td className=" text-sm md:w-96">
         <Link
           href={`/${cartProduct.products.id}/product`}
           className="mx-auto border rounded-md p-1 md:p-2 cursor-pointer flex flex-col md:flex-row items-center gap-1 md-gap-4"
         >
           <Image
             alt="Product Image"
-            className="aspect-square object-contain h-[70px] w-[70px] md:h-[130px] md:w-[130px]"
+            className="aspect-square object-contain h-[50px] w-[50px] md:h-[130px] md:w-[130px]"
             height={130}
             src={cartProduct.products.image_url}
             width={130}
           />
-          <h2 className="line-clamp-2 text-sm md:text-base md:line-clamp-4">{cartProduct.products.title}</h2>
+          <h2 className="hidden md:block line-clamp-2 text-sm md:text-base md:line-clamp-4">{cartProduct.products.title}</h2>
         </Link>
       </td>
       <td>
@@ -87,11 +87,11 @@ export default function CartProduct({
             min="1"
             max="10"
             value={quantity}
-            className="p-1 w-10 md:w-20"
+            className="p-0.5 md:p-1 w-10 md:w-20"
             type="number"
           />
           {
-            quantityChanged && <Button onClick={() => handleConfirmQuantity()} >confirm</Button>
+            quantityChanged && <Button size="sm" onClick={() => handleConfirmQuantity()} >confirm</Button>
           }
         </div>
       </td>
@@ -103,7 +103,7 @@ export default function CartProduct({
       <td>
         <div className="mx-auto w-fit">
           <Dialog>
-            <DialogTrigger className="p-1 border rounded-md"><X /></DialogTrigger>
+            <DialogTrigger className="p-0.5 md:p-1 border rounded-md"><X /></DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Are you sure?</DialogTitle>
