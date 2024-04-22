@@ -7,6 +7,7 @@ import Footer from "../components/Footer";
 import InitUser from "../lib/store/initUser";
 import { Toaster } from "sonner";
 import InitCart from "../lib/store/initCart";
+import { ThemeProvider } from "../components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,20 +21,24 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const supabase = await supabaseServer();
   const { data } = await supabase.auth.getSession();
-  const cart = await supabase.from("cart").select("*, products(*)").eq("user_id", data?.session?.user?.id);
+  const cart = await supabase
+    .from("cart")
+    .select("*, products(*)")
+    .eq("user_id", data?.session?.user?.id);
 
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header />
-        {children}
-        <Toaster position="top-center" />
-        <Footer />
-        <InitUser user={data?.session?.user} />
-        <InitCart cart={cart.data!}/>
+        <ThemeProvider defaultTheme="light">
+          <Header />
+          {children}
+          <Toaster position="top-center" />
+          <Footer />
+          <InitUser user={data?.session?.user} />
+          <InitCart cart={cart.data!} />
+        </ThemeProvider>
       </body>
     </html>
   );
