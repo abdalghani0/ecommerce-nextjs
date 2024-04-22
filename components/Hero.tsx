@@ -11,7 +11,7 @@ export default function Hero() {
           Embrace the season with our latest styles. Limited time offer.
         </p>
       </div>
-      <Image alt="Hero" className="w-1/2" height="732" src="/h.svg" width="500" />
+      <Image alt="Hero" className="w-1/2" height="732" src="/hero.svg" width="500" />
     </div>
   );
 }

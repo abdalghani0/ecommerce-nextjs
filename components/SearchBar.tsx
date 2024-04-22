@@ -52,17 +52,17 @@ export default function SearchBar() {
             <Link
               href={`/${result.id}/product`}
               key={result.id}
-              className="flex gap-2 p-2 cursor-pointer rounded-lg hover:bg-gray-100"
+              className="flex border-b gap-2 p-2 cursor-pointer rounded-lg hover:bg-gray-100"
               onClick={() => handleSelectSuggestion()}
             >
               <Image
                 alt="product image"
-                className="object-contain"
+                className="object-contain aspect-[2/3]"
                 src={result.image_url}
                 width={50}
                 height={50}
               />
-              <p className="text-sm line-clamp-2 md:line-clamp-3">
+              <p className="text-xs md:text-sm line-clamp-4">
                 {result.title}
               </p>
             </Link>

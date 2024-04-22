@@ -38,7 +38,7 @@ function Rate({ rate } : { rate : number }) {
         if(rate >= number)
             s = `fill-yellow-500 stroke-yellow-500 stroke-1`;
         else
-            s = `stroke-gray-300 stroke-1`;
+            s = `stroke-yellow-500 stroke-1`;
         return s;
     }
     return(

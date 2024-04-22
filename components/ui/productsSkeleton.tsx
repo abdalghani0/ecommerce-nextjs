@@ -15,8 +15,6 @@ export function ProudctsSkeleton() {
             <ProductSkeleton />
             <ProductSkeleton />
             <ProductSkeleton />
-            <ProductSkeleton />
-            <ProductSkeleton />
         </div>
     )
 }

@@ -16,7 +16,7 @@ export default function Page() {
         <p className="text-lg md:text-lg mx-auto md:mx-0 px-8">Your cart products</p>
         <CartProducts />
         <div className="p-5 flex flex-col items-center gap-5 md:self-end">
-          <div className=" p-3 w-80 border rounded-md space-y-3">
+          <div className="p-3 w-60 sm:w-80 border rounded-md space-y-3">
             <p className="flex border-b pb-2 justify-between">
               <span className="font-semibold">Subtotal:</span>
               <span>${subtotal.toFixed(2)}</span>
@@ -31,7 +31,7 @@ export default function Page() {
             </p>
             <p className="flex items-center justify-between">
               <span className="font-semibold">Grand Total:</span>
-              <span className="font-bold text-xl">${subtotal.toFixed(2)}</span>
+              <span className="font-bold text-lg md:text-xl">${subtotal.toFixed(2)}</span>
             </p>
           </div>
           <Button>Check out</Button>

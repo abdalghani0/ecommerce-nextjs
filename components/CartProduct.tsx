@@ -62,19 +62,19 @@ export default function CartProduct({
 
   return (
     <tr className="pb-4">
-      <td className=" text-sm md:w-96">
+      <td className="sm:w-60 md:w-96 text-sm">
         <Link
           href={`/${cartProduct.products.id}/product`}
           className="mx-auto border rounded-md p-1 md:p-2 cursor-pointer flex flex-col md:flex-row items-center gap-1 md-gap-4"
         >
           <Image
             alt="Product Image"
-            className="aspect-square object-contain h-[50px] w-[50px] md:h-[130px] md:w-[130px]"
+            className="aspect-square object-contain h-[60px] w-[60px] sm:h-[80px] sm:w-[80px] md:h-[130px] md:w-[130px]"
             height={130}
             src={cartProduct.products.image_url}
             width={130}
           />
-          <h2 className="hidden md:block line-clamp-2 text-sm md:text-base md:line-clamp-4">{cartProduct.products.title}</h2>
+          <h2 className="line-clamp-2 text-sm md:text-base md:line-clamp-4 hidden sm:block">{cartProduct.products.title}</h2>
         </Link>
       </td>
       <td>
