@@ -5,10 +5,11 @@ import { HeartIcon, ShoppingBagIcon } from "./ui/icons";
 import Link from "next/link";
 import { Badge } from "./ui/badge";
 import UserDropDownMenu from "./ui/userDropDownMenu";
-import { LoginDialog, SingUpDialog } from "./LoginOrSignup";
+import { LoginDialog } from "./LoginDialog";
 import { useUser } from "../lib/store/user";
 import { useCart } from "../lib/store/cart";
 import { usePathname } from "next/navigation";
+import { toast } from "sonner";
 
 export default function Profile() {
   const { user } = useUser();
@@ -21,6 +22,7 @@ export default function Profile() {
         className="rounded-full text-white hover:text-gray-700"
         size="icon"
         variant="ghost"
+        onClick={() => toast.info("Coming Soon!")}
       >
         <HeartIcon className="h-4 w-4" />
         <span className="sr-only">View wishlist</span>
@@ -46,16 +48,8 @@ export default function Profile() {
         </Button>
       </Link>
 
-      {user ? <UserDropDownMenu user={user} /> : <LoginOrSignUp />}
+      {user ? <UserDropDownMenu user={user} /> : <LoginDialog />}
     </div>
   );
 }
 
-function LoginOrSignUp() {
-  return (
-    <>
-      <SingUpDialog />
-      <LoginDialog />
-    </>
-  );
-}

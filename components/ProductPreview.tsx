@@ -18,23 +18,28 @@ export default function ProductPreview({ product }: { product: product }) {
 
   const handleAddToCart = async () => {
     const supabase = supabaseBrowser();
-    if (quantity >= 1) {
-      const cartProduct = {
-        id: uuidv4(),
-        user_id: user?.id,
-        product_id: product.id,
-        quantity,
-      };
-      const { error } = await supabase.from("cart").insert(cartProduct);
-      if (error) {
-        toast.error(error.message);
+    if (user) {
+      if (quantity >= 1) {
+        const cartProduct = {
+          id: uuidv4(),
+          user_id: user?.id,
+          product_id: product.id,
+          quantity,
+        };
+        const { error } = await supabase.from("cart").insert(cartProduct);
+        if (error) {
+          toast.error(error.message);
+        } else {
+          addToCart({ ...cartProduct, products: product });
+          toast.success("Added to cart successfully");
+        }
       } else {
-        addToCart({ ...cartProduct, products: product });
-        toast.success("Added to cart successfully");
+        toast.error("Quantity must be greater than zero!");
       }
-    } else {
-      toast.error("Quantity must be greater than zero!");
-    }
+    } else
+      toast.warning(
+        "You need to make an account to add products to cart."
+      );
   };
 
   const handleQuantityChange = (e) => {

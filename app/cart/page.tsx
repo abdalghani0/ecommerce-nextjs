@@ -27,11 +27,11 @@ export default function Page() {
             </p>
             <p className="flex border-b pb-2 justify-between">
               <span className="font-semibold">Shipping:</span>
-              <span>$10</span>
+              <span>Free</span>
             </p>
             <p className="flex items-center justify-between">
               <span className="font-semibold">Grand Total:</span>
-              <span className="font-bold text-xl">${(subtotal + 10).toFixed(2)}</span>
+              <span className="font-bold text-xl">${subtotal.toFixed(2)}</span>
             </p>
           </div>
           <Button>Check out</Button>

@@ -19,10 +19,10 @@ export default function UserDropDownMenu({user} : {user: User}) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <div className="hover:bg-accent hover:text-accent-foreground h-9 w-9 rounded-full transition-colors">
+        <div className="hover:bg-accent flex justify-center h-9 w-9 rounded-full transition-colors">
           <Image
             alt="Avatar"
-            className="rounded-full"
+            className="rounded-full w-full"
             height="32"
             src={user?.user_metadata.avatar_url}
             style={{

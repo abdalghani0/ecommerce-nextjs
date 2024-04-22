@@ -7,14 +7,12 @@ import { product } from "../lib/store/products";
 import { supabaseBrowser } from "../lib/supabase/browser";
 import { toast } from "sonner";
 import Image from "next/image";
-import debounce from "debounce";
-import { type } from "os";
 import Link from "next/link";
 
 export default function SearchBar() {
   const path = usePathname();
   const [searchResults, setSearchResults] = useState<product[] | undefined>();
-  const [showSuggestions, setShowSuggestions] = useState(false); // State to control visibility of suggestions
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [text, setText] = useState("");
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,7 +25,7 @@ export default function SearchBar() {
         .limit(6);
       if (error) toast.error(error.message);
       setSearchResults(data);
-      setShowSuggestions(true); // Show suggestions when search results are available
+      setShowSuggestions(true);
     } else {
       setSearchResults(undefined);
       setShowSuggestions(false);
