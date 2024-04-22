@@ -13,7 +13,7 @@ export default function Page() {
         <section className="container mb-6 grid items-start gap-4 px-4 md:grid-cols-2 md:items-center md:gap-10 md:px-6 lg:gap-16">
           <div className="flex-col items-center justify-center space-y-4 md:order-1 md:justify-start md:space-y-8">
             <div className="space-y-2">
-              <h2 className="text-3xl font-semibold tracking-tighter sm:text-4xl md:text-5xl">Featured Products</h2>
+              <h2 className="text-3xl font-semibold tracking-tighter text-3xl md:text-5xl">Featured Products</h2>
               <p className="text-gray-500 dark:text-gray-400">
                 Introducing our most popular items. Shop the best of the season.
               </p>

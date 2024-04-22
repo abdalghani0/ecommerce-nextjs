@@ -24,7 +24,7 @@ export function SingUpDialog() {
 
         }
         else {
-            const { data, error } = await supabase.auth.signUp({
+            const { error } = await supabase.auth.signUp({
                 email: email,
                 password: password,
                 options: {
@@ -44,7 +44,7 @@ export function SingUpDialog() {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: 'github',
             options: {
-                redirectTo: location.origin + "/api/auth/callback",
+                redirectTo: location.origin + "/auth/callback",
             }
         })
         if (error)

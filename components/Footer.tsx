@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="container grid md:grid-cols-3 md:items-start md:gap-6">
         <div className="space-y-4">
           <Link className="font-semibold" href="#">
-            Acme Clothing
+            Ecommerce
           </Link>
           <p className="text-sm/relaxed text-wrap">
             The best online destination for stylish and affordable clothing. Shop the latest trends for men and women.
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="container grid md:grid-cols-2 md:items-center md:gap-6">
-        <p className="text-center md:text-left">© 2023 Acme Clothing. All rights reserved.</p>
+        <p className="text-center md:text-left">© 2024 Ecommerce. All rights reserved.</p>
         <nav className="flex justify-center space-x-4 md:justify-end">
           <Link className="hover:underline" href="/">
             Home

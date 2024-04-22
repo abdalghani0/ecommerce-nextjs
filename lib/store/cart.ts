@@ -13,6 +13,7 @@ interface CartState {
     cart: cartProduct[] | undefined;
     cartLength: number | undefined;
     setCartLength: (num: number | undefined) => void;
+    deleteCartProduct: (removedProduct: cartProduct) => void;
     addToCart: (cartProduct: cartProduct) => void;
     updateCartProduct: (cartProduct: cartProduct) => void;
 }
@@ -25,6 +26,9 @@ export const useCart = create<CartState>()((set) => ({
     })) ,
     addToCart: (cartProduct) => set((state) => ({
         cart: [...state.cart, cartProduct]
+    })),
+    deleteCartProduct: (removedProduct) => set((state) => ({
+        cart: state.cart.filter((product) => (product.id !== removedProduct.id))
     })),
     updateCartProduct: (cartProduct) => set((state) => ({
         cart: state.cart.filter((c) => {
