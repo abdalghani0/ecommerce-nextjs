@@ -28,36 +28,42 @@ export default function CartProduct({
   const [quantity, setQuantity] = useState(cartProduct.quantity);
   const [quantityChanged, setQuantityChanged] = useState(false);
   const total = cartProduct.products.price * quantity;
-  
 
   const handleQuantityChange = (e) => {
     const q = parseInt(e.currentTarget.value);
-    if (q >= 1 && q <= 10) {
-      setQuantity(q);
-      setQuantityChanged(true);
-    }
+    setQuantity(q);
+    setQuantityChanged(true);
   };
 
   const handleConfirmQuantity = async () => {
-    const supabase = supabaseBrowser();
-    const newCartProduct = { ...cartProduct, quantity };
-    updateCartProduct(newCartProduct);
-    setQuantityChanged(false);
-    const { error } = await supabase
-      .from("cart")
-      .update({ quantity })
-      .eq("id", cartProduct.id);
-    if (error) {
-      toast.error(error.message);
+    if (quantity >= 1 && quantity <= 100) {
+      const supabase = supabaseBrowser();
+      const newCartProduct = { ...cartProduct, quantity };
+      updateCartProduct(newCartProduct);
+      setQuantityChanged(false);
+      const { error } = await supabase
+        .from("cart")
+        .update({ quantity })
+        .eq("id", cartProduct.id);
+      if (error) {
+        toast.error(error.message);
+      }
+      else {
+        toast.success("Quantity Changed!")
+      }
+    } else {
+      toast.error("Quantity must be greater than zero and less than 100!");
     }
   };
 
   const handleCancel = async () => {
     const supabase = supabaseBrowser();
     deleteCartProduct(cartProduct);
-    const { error } = await supabase.from("cart").delete().eq("id", cartProduct.id);
-    if(error)
-        toast.error(error.message);
+    const { error } = await supabase
+      .from("cart")
+      .delete()
+      .eq("id", cartProduct.id);
+    if (error) toast.error(error.message);
   };
 
   return (
@@ -74,7 +80,9 @@ export default function CartProduct({
             src={cartProduct.products.image_url}
             width={130}
           />
-          <h2 className="line-clamp-2 text-sm md:text-base md:line-clamp-4 hidden sm:block">{cartProduct.products.title}</h2>
+          <h2 className="line-clamp-2 text-sm md:text-base md:line-clamp-4 hidden sm:block">
+            {cartProduct.products.title}
+          </h2>
         </Link>
       </td>
       <td>
@@ -85,39 +93,41 @@ export default function CartProduct({
           <Input
             onChange={(e) => handleQuantityChange(e)}
             min="1"
-            max="10"
+            max="100"
             value={quantity}
             className="p-0.5 md:p-1 w-10 md:w-20"
             type="number"
           />
-          {
-            quantityChanged && <Button size="sm" onClick={() => handleConfirmQuantity()} >confirm</Button>
-          }
+          {quantityChanged && (
+            <Button size="sm" onClick={() => handleConfirmQuantity()}>
+              confirm
+            </Button>
+          )}
         </div>
       </td>
       <td>
-        <p className="mx-auto w-fit font-semibold">
-          ${total.toFixed(2)}
-        </p>
+        <p className="mx-auto w-fit font-semibold">${total.toFixed(2)}</p>
       </td>
       <td>
         <div className="mx-auto w-fit">
           <Dialog>
-            <DialogTrigger className="p-0.5 md:p-1 border rounded-md"><X /></DialogTrigger>
+            <DialogTrigger className="p-0.5 md:p-1 border rounded-md">
+              <X />
+            </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Are you sure?</DialogTitle>
                 <DialogDescription className="py-2">
-                  This action cannot be undone. This will delete
-                  the product from your cart.
+                  This action cannot be undone. This will delete the product
+                  from your cart.
                 </DialogDescription>
               </DialogHeader>
               <DialogFooter className="flex flex-row justify-center md:justify-end gap-2">
                 <DialogClose>
-                    <Button onClick={() => handleCancel()}>Confirm</Button>
+                  <Button onClick={() => handleCancel()}>Confirm</Button>
                 </DialogClose>
                 <DialogClose>
-                    <Button variant="outline">cancel</Button>
+                  <Button variant="outline">cancel</Button>
                 </DialogClose>
               </DialogFooter>
             </DialogContent>

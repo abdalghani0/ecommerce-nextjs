@@ -12,14 +12,14 @@ import { v4 as uuidv4 } from "uuid";
 import Image from "next/image";
 
 export default function ProductPreview({ product }: { product: product }) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number>(1);
   const { user } = useUser();
   const { addToCart } = useCart();
 
   const handleAddToCart = async () => {
     const supabase = supabaseBrowser();
     if (user) {
-      if (quantity >= 1) {
+      if (quantity >= 1 && quantity <= 100) {
         const cartProduct = {
           id: uuidv4(),
           user_id: user?.id,
@@ -31,10 +31,10 @@ export default function ProductPreview({ product }: { product: product }) {
           toast.error(error.message);
         } else {
           addToCart({ ...cartProduct, products: product });
-          toast.success("Added to cart successfully");
+          toast.success("Added to cart successfully!");
         }
       } else {
-        toast.error("Quantity must be greater than zero!");
+        toast.error("Quantity must be greater than zero and less than 100!");
       }
     } else
       toast.warning(
@@ -44,10 +44,8 @@ export default function ProductPreview({ product }: { product: product }) {
 
   const handleQuantityChange = (e) => {
     const q = parseInt(e.currentTarget.value);
-    if (q >= 1 && q <= 10) {
-      setQuantity(q);
-    }
-  };
+    setQuantity(q);
+}
 
   return (
     <div className="flex-col justify-center md:flex-row flex items-center gap-5 lg:gap-20 py-5 md:py-10 lg:px-20 h-full">
@@ -67,7 +65,7 @@ export default function ProductPreview({ product }: { product: product }) {
         <Input
           onChange={(e) => handleQuantityChange(e)}
           min="1"
-          max="10"
+          max="100"
           value={quantity}
           className="p-1 w-20"
           type="number"
