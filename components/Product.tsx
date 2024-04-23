@@ -7,8 +7,7 @@ import { Star } from "lucide-react";
 
 export default function Product({ product }: { product: product }) {
   return (
-    <Link className="cursor-pointer" href={`/${product.id}/product`}>
-      <div className="flex flex-col items-center gap-2 rounded-lg border hover:shadow-2xl transition-all dark:hover:shadow-lg">
+    <Link className="cursor-pointer flex flex-col items-center gap-2 rounded-lg border hover:shadow-2xl transition-all dark:hover:shadow-lg" href={`/${product.id}/product`}>
         <Image
           alt="Product image"
           className="aspect-[5/6] rounded-t-lg object-contain object-center"
@@ -30,7 +29,6 @@ export default function Product({ product }: { product: product }) {
             View product
           </Button>
         </Link>
-      </div>
     </Link>
   );
 }
