@@ -14,28 +14,28 @@ export default function NavMenu() {
             <Menu />
           </div>
         </DropdownMenuTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="text-sm">
           <DropdownMenuLabel>Acme Clothing</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem 
             className={path === "/" ? "bg-gray-100" : ""}
             >
-            <Link href="/">
-              <HomeIcon className="mr-2 h-4 w-4 inline" /> Home
+            <Link className="flex gap-2" href="/">
+              <HomeIcon className="h-4 w-4" /> <span>Home</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem 
             className={path === "/clothes" ? "bg-gray-100" : ""}
           >
-            <Link href="/clothes">
-              <UserIcon className="mr-2 h-4 w-4 inline" /> Clothes
+            <Link className="flex gap-2" href="/clothes">
+              <UserIcon className="h-4 w-4" /> <span>Clothes</span>
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem 
             className={path === "/miscellanious" ? "bg-gray-100" : ""}
           >
-            <Link href="/miscellanious">
-              <GlassesIcon className="mr-2 h-4 w-4 inline" /> Miscellanious
+            <Link className="flex gap-2" href="/miscellanious">
+              <GlassesIcon className="h-4 w-4" /> <span>Other</span>
             </Link>
           </DropdownMenuItem>
         </DropdownMenuContent>

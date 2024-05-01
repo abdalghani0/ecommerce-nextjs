@@ -27,7 +27,7 @@ export default function NavBar() {
             href="/miscellanious"
           >
             <GlassesIcon className="h-4 w-4" />
-            Miscellanious
+            Other
           </Link>
         </nav>
       )
