@@ -17,7 +17,6 @@ import {
 } from "./ui/dialog";
 import { X } from "lucide-react";
 import Image from "next/image";
-import debounce from "debounce";
 
 export default function CartProduct({
   cartProduct,

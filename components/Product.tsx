@@ -4,10 +4,14 @@ import { product } from "../lib/store/products";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import { Star } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function Product({ product }: { product: product }) {
+  const router = useRouter();
   return (
-    <Link className="cursor-pointer flex flex-col items-center gap-2 rounded-lg border hover:shadow-2xl transition-all dark:hover:shadow-lg" href={`/${product.id}/product`}>
+    <div 
+      className="cursor-pointer flex flex-col items-center gap-2 rounded-lg border hover:shadow-2xl transition-all dark:hover:shadow-lg"
+      onClick={() => router.push(`/${product.id}/product`)} >
         <Image
           alt="Product image"
           className="aspect-[5/6] rounded-t-lg object-contain object-center"
@@ -29,7 +33,7 @@ export default function Product({ product }: { product: product }) {
             View product
           </Button>
         </Link>
-    </Link>
+    </div>
   );
 }
 
