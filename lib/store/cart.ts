@@ -31,10 +31,10 @@ export const useCart = create<CartState>()((set) => ({
         cart: state.cart.filter((product) => (product.id !== removedProduct.id))
     })),
     updateCartProduct: (cartProduct) => set((state) => ({
-        cart: state.cart.filter((c) => {
-            if (c.id === cartProduct.id)
+        cart: state.cart.map((product) => {
+            if(product.id === cartProduct.id)
                 return cartProduct;
-            return c;
+            return product;
         })
     }))
 }))

@@ -37,7 +37,7 @@ export default function CartProduct({
   const handleConfirmQuantity = async () => {
     if (quantity >= 1 && quantity <= 100) {
       const supabase = supabaseBrowser();
-      const newCartProduct = { ...cartProduct, quantity };
+      const newCartProduct = { ...cartProduct, quantity: quantity };
       updateCartProduct(newCartProduct);
       setQuantityChanged(false);
       const { error } = await supabase

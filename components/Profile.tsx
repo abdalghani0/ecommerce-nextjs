@@ -18,16 +18,18 @@ export default function Profile() {
 
   return (
     <div className="flex items-center space-x-1 md:space-x-3">
-      <Button
-        className="rounded-full text-white hover:text-gray-700"
-        size="icon"
-        variant="ghost"
-        onClick={() => toast.info("Coming Soon!")}
-      >
-        <HeartIcon className="h-4 w-4" />
-        <span className="sr-only">View wishlist</span>
-      </Button>
-      <Link href="/cart">
+      <Link href="#" className="max-md:hidden">
+        <Button
+          className="rounded-full text-white hover:text-gray-700"
+          size="icon"
+          variant="ghost"
+          onClick={() => toast.info("Coming Soon!")}
+        >
+          <HeartIcon className="h-4 w-4" />
+          <span className="sr-only">View wishlist</span>
+        </Button>
+      </Link>
+      <Link href="/cart" className="max-md:hidden">
         <Button
           className={`text-white ${
             path === `/cart` ? `bg-white text-gray-700` : ``
@@ -39,9 +41,9 @@ export default function Profile() {
           {cart ? (
             <Badge
               variant="secondary"
-              className="absolute rounded-full w-2 h-2 p-2 bottom-0 right-0"
+              className="flex justify-center items-center absolute rounded-full w-2 h-2 p-2 bottom-0 right-0"
             >
-              <span className="mr-auto text-center">{cart?.length}</span>
+              <span>{cart?.length}</span>
             </Badge>
           ) : null}
           <span className="sr-only">View cart</span>
@@ -52,4 +54,3 @@ export default function Profile() {
     </div>
   );
 }
-

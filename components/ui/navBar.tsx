@@ -24,7 +24,7 @@ export default function NavBar() {
           </Link>
           <Link
             className={`${path === `/miscellanious`? `bg-white text-gray-700` : ``} hover:bg-white transition-colors p-2 rounded-md flex items-center gap-2 text-gray-100 hover:text-gray-700 dark:text-gray-900 dark:hover:text-gray-900`}            
-            href="/miscellanious"
+            href="/other"
           >
             <GlassesIcon className="h-4 w-4" />
             Other

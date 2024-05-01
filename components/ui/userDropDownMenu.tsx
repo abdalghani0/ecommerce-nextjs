@@ -1,19 +1,16 @@
 "use client"
-import { useRouter } from "next/navigation"
 import { supabaseBrowser } from "../../lib/supabase/browser"
-import { Button } from "./button"
 import { DropdownMenuTrigger, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuItem, DropdownMenuContent, DropdownMenu } from "./dropdown-menu"
 import { ArchiveIcon, LogOutIcon, SettingsIcon, UserIcon } from "./icons"
 import { User } from "@supabase/supabase-js"
 import Image from "next/image"
 
 export default function UserDropDownMenu({user} : {user: User}) {
-  const router = useRouter();
 
   const handleLogout = async () => {
     const supabase = supabaseBrowser();
     await supabase.auth.signOut();
-    router.refresh();
+    window.location.reload();
   };
 
   return (

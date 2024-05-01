@@ -8,7 +8,7 @@ export default function Page() {
     <>
       <div className="mb-5 relative">
         <Image
-          alt="miscellanios"
+          alt="other"
           src="/miscellanious.jpg"
           className="w-full object-cover md:aspect-[5/2] lg:aspect-[6/2]"
           width={1444}

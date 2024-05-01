@@ -38,7 +38,7 @@ export default function ProductPreview({ product }: { product: product }) {
       }
     } else
       toast.warning(
-        "You need to make an account to add products to cart."
+        "Make an account to add products to cart."
       );
   };
 
