@@ -43,7 +43,7 @@ export default function Profile() {
               variant="secondary"
               className="flex justify-center items-center absolute rounded-full w-2 h-2 p-2 bottom-0 right-0"
             >
-              <span>{cart?.length}</span>
+              <span className="ml-[1px]">{cart?.length}</span>
             </Badge>
           ) : null}
           <span className="sr-only">View cart</span>
